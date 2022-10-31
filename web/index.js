@@ -85,14 +85,14 @@ export async function createServer(
   });
 
   app.get("/taxInfo", async (req, res) =>{
-    const variants = JSON.parse(req.query.variantIDs);
+    const products = req.query.products.split(',');
     const session = await Shopify.Utils.loadCurrentSession(req, res);
     const client = new Shopify.Clients.Graphql(session.shop, session.accessToken);
 
     const query = `{
       query {
-        ${variants.map((variant) => {
-            `variant : product(id: "gid:\/\/shopify\/Product\/${variant.id}") {
+        ${products.map((product) => {
+            `variant : product(id: "gid:\/\/shopify\/Product\/${product.id}") {
               id,
 				      tax:metafield(key:"tax",namespace:"custom"){
                 value
