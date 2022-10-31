@@ -91,7 +91,8 @@ export async function createServer(
       res,
       app.get("use-online-tokens")
     );
-    const client = new Shopify.Clients.Graphql(session.shop, session.accessToken);
+    console.log(session);
+    const client = new Shopify.Clients.Graphql(req.query.shop, session.accessToken);
 
     const query = `{
       query {
