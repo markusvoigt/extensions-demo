@@ -86,7 +86,11 @@ export async function createServer(
 
   app.get("/taxInfo", async (req, res) =>{
     const products = req.query.products.split(',');
-    const session = await Shopify.Utils.loadCurrentSession(req, res);
+    const session = await Shopify.Utils.loadCurrentSession(
+      req,
+      res,
+      app.get("use-online-tokens")
+    );
     const client = new Shopify.Clients.Graphql(session.shop, session.accessToken);
 
     const query = `{
