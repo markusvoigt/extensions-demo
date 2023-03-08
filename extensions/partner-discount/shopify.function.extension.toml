@@ -1,0 +1,11 @@
+name = "partner-discount"
+type = "product_discounts"
+api_version = "2022-07"
+
+[build]
+command = "cargo wasi build --release"
+path = "target/wasm32-wasi/release/partner-discount.wasm"
+
+[ui.paths]
+create = "/partner/new"
+details = "/partner/:id" 

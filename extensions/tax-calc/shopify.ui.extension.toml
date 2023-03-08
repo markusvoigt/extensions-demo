@@ -5,18 +5,19 @@ extension_points = [
   'Checkout::Dynamic::Render'
 ]
 
-# [[metafields]]
-# namespace = "my-namespace"
-# key = "my-key"
 
-# [[metafields]]
-# namespace = "my-namespace"
-# key = "my-key-2"
+[[metafields]]
+namespace = "custom"
+key = "billing"
+
+[capabilities]
+block_progress = true
+
 
 # Read more on extension settings at https://shopify.dev/api/checkout-extensions/checkout/configuration
-# [settings]
-#   [[settings.fields]]
-#   key = "banner_title"
-#   type = "single_line_text_field"
-#   name = "Banner title"
-#   description = "Enter a title for the banner"
+ [settings]
+   [[settings.fields]]
+   key = "label"
+   type = "single_line_text_field"
+   name = "Put label for field here"
+   description = "Label for billing reference ID"
